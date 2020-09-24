@@ -6,7 +6,7 @@ import TasksModel from "./model/tasks.js";
 import FilterModel from "./model/filter.js";
 import {render, RenderPosition, remove} from "./utils/render.js";
 import {MenuItem, UpdateType, FilterType} from "./const.js";
-import Api from "./api/index.js";
+import TaskAdapter from "./api/task-adapter";
 import Store from "./api/store.js";
 import Provider from "./api/provider.js";
 
@@ -19,7 +19,7 @@ const STORE_NAME = `${STORE_PREFIX}-${STORE_VER}`;
 const siteMainElement = document.querySelector(`.main`);
 const siteHeaderElement = siteMainElement.querySelector(`.main__control`);
 
-const api = new Api(END_POINT, AUTHORIZATION);
+const api = new TaskAdapter(END_POINT, AUTHORIZATION);
 const store = new Store(STORE_NAME, window.localStorage);
 const apiWithProvider = new Provider(api, store);
 const tasksModel = new TasksModel();

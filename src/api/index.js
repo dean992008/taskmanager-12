@@ -20,8 +20,7 @@ export default class Api {
 
   getTasks() {
     return this._load({url: `tasks`})
-      .then(Api.toJSON)
-      .then((tasks) => tasks.map(TasksModel.adaptToClient));
+      .then(Api.toJSON);
   }
 
   updateTask(task) {
@@ -31,8 +30,7 @@ export default class Api {
       body: JSON.stringify(TasksModel.adaptToServer(task)),
       headers: new Headers({"Content-Type": `application/json`})
     })
-      .then(Api.toJSON)
-      .then(TasksModel.adaptToClient);
+      .then(Api.toJSON);
   }
 
   addTask(task) {
@@ -42,8 +40,7 @@ export default class Api {
       body: JSON.stringify(TasksModel.adaptToServer(task)),
       headers: new Headers({"Content-Type": `application/json`})
     })
-      .then(Api.toJSON)
-      .then(TasksModel.adaptToClient);
+      .then(Api.toJSON);
   }
 
   deleteTask(task) {
